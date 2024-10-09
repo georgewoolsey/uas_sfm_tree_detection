@@ -1,0 +1,64 @@
+--- 
+title: "UAS-SfM Software Tree Detection Comparison"
+author: "George Woolsey"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+site: bookdown::bookdown_site
+output: 
+  bookdown::gitbook:
+    includes:
+      in_header: header.html
+documentclass: book
+book_filename: "uas_sfm_tree_detection"
+output_dir: "../docs"
+language:
+  ui:
+    chapter_name: "Section "
+delete_merged_file: true
+bibliography: [packages.bib]
+biblio-style: apalike
+csl: https://raw.githubusercontent.com/citation-style-language/styles/master/research-institute-for-nature-and-forest.csl
+suppress-bibliography: true
+lang: en-US
+zotero: true
+link-citations: true
+description: "Using the bookdown package to write a book of data exploration. The output format for this example is bookdown::gitbook."
+---
+
+# Introduction
+
+Code in support of "Influence of Structure from Motion Algorithm Parameters on Metrics of Individual Tree Detection Accuracy and Precision" published by *Remote Sensing*, 2024, XX, xx-xx ([https://www.mdpi.com/journal/remotesensing](https://www.mdpi.com/journal/remotesensing))
+
+# Objective
+
+Characterizing forest attributes from imagery collected via UAS platforms and processed using structure from motion (SfM) photogrammetry is among the most widely tested and affordable remote sensing approaches to describe 3-dimensional forest attributes. This study compares the accuracy and precision of individual tree detection against the range of SfM parameters available in two commercial (Agisoft Metashape and Pix4DMapper) and one open-source algorithm (OpenDroneMap).
+
+# Data
+
+Five ponderosa pine (*Pinus ponderosa*) dominated sites with 100% census field stem-mapped inventories were used to evaluate how SfM algorithm parameters impact individual tree detection and resulting stand basal area estimates compared to field-based measurements. UAS flights from the following forests were included: the Manitou Experimental Forest on the Pike-San Isabel National Forest (Colorado; "N1"), the Black Hills Experimental Forest on the Black Hills National Forest (South Dakota; "SQ09_02", "WA85_02"), and the Lookout Canyon area in the Kaibab National Forest (Arizona; "Kaibab_High", "Kaibab_Low").
+
+```{r include=FALSE, echo=FALSE, eval=F}
+knitr::write_bib(c(
+  .packages(),
+  "bookdown"
+  , "knitr"
+  , "rmarkdown"
+  , "tidyverse"
+  , "viridis"
+  , "scales"
+  , "latex2exp"
+  , "terra"
+  , "sf"
+  , "stars"
+  , "kableExtra"
+  , "patchwork"
+  , "mapview"
+  , "leafpop"
+  , "ggnewscale"
+  , "ggtext"
+  , "ggpubr"
+  , "pdftools"
+  , "brms"
+  , "tidybayes"
+  , "Metrics"
+), 'packages.bib')
+```

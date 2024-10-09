@@ -1,0 +1,17 @@
+book_filename: "metashape_testing"
+output_dir: "../docs"
+output: 
+  bookdown::gitbook:
+    toc_depth: 4
+    includes:
+      in_header: header.html
+language:
+  ui:
+    chapter_name: "Section "
+delete_merged_file: true
+# rmd_subdir: ["src/"]
+# rmd_files: ["index.Rmd"
+#   , "01_data_processing_spatial.Rmd"
+#   , "02_data_processing_combine.Rmd"
+#   , "03_analysis_harvest_npp.Rmd"
+# ]

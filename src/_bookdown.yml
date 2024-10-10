@@ -1,4 +1,4 @@
-book_filename: "metashape_testing"
+book_filename: "uas_sfm_tree_detection"
 output_dir: "../docs"
 output: 
   bookdown::gitbook:

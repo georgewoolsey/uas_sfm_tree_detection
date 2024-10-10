@@ -39,6 +39,12 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 
-data/
+data/field_validation/
+data/fits/
+data/*.pdf
+data/*.xlsx
+data/*.png
+data/*.jpg
+data/*.jpeg
 src/_bookdown_files/
 src/gee_js/

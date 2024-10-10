@@ -36,7 +36,7 @@ Characterizing forest attributes from imagery collected via UAS platforms and pr
 
 Five ponderosa pine (*Pinus ponderosa*) dominated sites with 100% census field stem-mapped inventories were used to evaluate how SfM algorithm parameters impact individual tree detection and resulting stand basal area estimates compared to field-based measurements. UAS flights from the following forests were included: the Manitou Experimental Forest on the Pike-San Isabel National Forest (Colorado; "N1"), the Black Hills Experimental Forest on the Black Hills National Forest (South Dakota; "SQ09_02", "WA85_02"), and the Lookout Canyon area in the Kaibab National Forest (Arizona; "Kaibab_High", "Kaibab_Low").
 
-```{r include=FALSE, echo=FALSE, eval=F}
+```{r, include=FALSE, echo=FALSE}
 knitr::write_bib(c(
   .packages(),
   "bookdown"
@@ -44,21 +44,18 @@ knitr::write_bib(c(
   , "rmarkdown"
   , "tidyverse"
   , "viridis"
+  , "RColorBrewer"
   , "scales"
   , "latex2exp"
-  , "terra"
-  , "sf"
-  , "stars"
+  , "mapview"
   , "kableExtra"
   , "patchwork"
-  , "mapview"
-  , "leafpop"
   , "ggnewscale"
-  , "ggtext"
-  , "ggpubr"
-  , "pdftools"
+  , "terra"
+  , "stars"
+  , "sf"
   , "brms"
   , "tidybayes"
-  , "Metrics"
+  , "parallel"
 ), 'packages.bib')
 ```

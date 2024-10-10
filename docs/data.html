@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en-US" xml:lang="en-US">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Section 3 Data | UAS-SfM Software Tree Detection Comparison</title>
+  <meta name="description" content="Using the bookdown package to write a book of data exploration. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Section 3 Data | UAS-SfM Software Tree Detection Comparison" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Using the bookdown package to write a book of data exploration. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Section 3 Data | UAS-SfM Software Tree Detection Comparison" />
+  
+  <meta name="twitter:description" content="Using the bookdown package to write a book of data exploration. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="George Woolsey" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="objective.html"/>
+<link rel="next" href="ptcld_analysis.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.2.2/leaflet.js"></script>
+<script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.2.2/leaflet-providers-plugin.js"></script>
+<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
+<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
+<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
+<script src="libs/canopy ht. (m)_8796eb-1/data_stars_canopyhtmd90274.txt"></script>
+<script src="libs/joda-0.0.1/joda.js"></script>
+<script src="libs/joda-0.0.1/addImageQuery-bindings.js"></script>
+<script type="text/javascript">
+
+// toggle visibility of R source blocks in R Markdown output
+function toggle_R() {
+  var x = document.getElementsByClassName('r');
+  if (x.length == 0) return;
+  function toggle_vis(o) {
+    var d = o.style.display;
+    o.style.display = (d == 'block' || d == '') ? 'none':'block';
+  }
+
+  for (i = 0; i < x.length; i++) {
+    var y = x[i];
+    if (y.tagName.toLowerCase() === 'pre') toggle_vis(y);
+  }
+
+    var elem = document.getElementById("myButton1");
+    if (elem.value === "Hide Code") elem.value = "Show Code";
+    else elem.value = "Hide Code";
+}
+
+document.write('<input onclick="toggle_R();" type="button" value="Hide Code" id="myButton1" style="position: absolute; top: 10%; right: 2%; z-index: 200"></input>')
+
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="objective.html"><a href="objective.html"><i class="fa fa-check"></i><b>2</b> Objective</a></li>
+<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Data</a></li>
+<li class="chapter" data-level="4" data-path="ptcld_analysis.html"><a href="ptcld_analysis.html"><i class="fa fa-check"></i><b>4</b> Point Cloud Generation and Processing</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ptcld_analysis.html"><a href="ptcld_analysis.html#sfm-image-processing-data"><i class="fa fa-check"></i><b>4.1</b> SfM Image Processing Data</a></li>
+<li class="chapter" data-level="4.2" data-path="ptcld_analysis.html"><a href="ptcld_analysis.html#r-point-cloud-processing-data"><i class="fa fa-check"></i><b>4.2</b> <strong>R</strong> Point Cloud Processing Data</a></li>
+<li class="chapter" data-level="4.3" data-path="ptcld_analysis.html"><a href="ptcld_analysis.html#summary-of-data-generation-and-processing"><i class="fa fa-check"></i><b>4.3</b> Summary of Data Generation and Processing</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="ptcld_analysis.html"><a href="ptcld_analysis.html#number-of-files-summary"><i class="fa fa-check"></i><b>4.3.1</b> Number of files summary</a></li>
+<li class="chapter" data-level="4.3.2" data-path="ptcld_analysis.html"><a href="ptcld_analysis.html#r-processing-time-summary"><i class="fa fa-check"></i><b>4.3.2</b> <strong>R</strong> Processing Time Summary</a></li>
+<li class="chapter" data-level="4.3.3" data-path="ptcld_analysis.html"><a href="ptcld_analysis.html#r-processing-time-vs-points"><i class="fa fa-check"></i><b>4.3.3</b> <strong>R</strong> Processing Time vs # Points</a></li>
+<li class="chapter" data-level="4.3.4" data-path="ptcld_analysis.html"><a href="ptcld_analysis.html#r-processing-section-timing"><i class="fa fa-check"></i><b>4.3.4</b> <strong>R</strong> Processing Section Timing</a></li>
+<li class="chapter" data-level="4.3.5" data-path="ptcld_analysis.html"><a href="ptcld_analysis.html#summary-of-point-cloud-data"><i class="fa fa-check"></i><b>4.3.5</b> Summary of point cloud data</a></li>
+<li class="chapter" data-level="4.3.6" data-path="ptcld_analysis.html"><a href="ptcld_analysis.html#r-processing-summary"><i class="fa fa-check"></i><b>4.3.6</b> <strong>R</strong> Processing Summary</a></li>
+<li class="chapter" data-level="4.3.7" data-path="ptcld_analysis.html"><a href="ptcld_analysis.html#sfm-image-processing-time-summary"><i class="fa fa-check"></i><b>4.3.7</b> SfM image processing time summary</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="field_valid.html"><a href="field_valid.html"><i class="fa fa-check"></i><b>5</b> Field Validation</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="field_valid.html"><a href="field_valid.html#setup"><i class="fa fa-check"></i><b>5.1</b> Setup</a></li>
+<li class="chapter" data-level="5.2" data-path="field_valid.html"><a href="field_valid.html#data-load-functions"><i class="fa fa-check"></i><b>5.2</b> Data Load Functions</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="field_valid.html"><a href="field_valid.html#summary-of-field-validation-plot-data"><i class="fa fa-check"></i><b>5.2.1</b> Summary of field validation plot data</a></li>
+<li class="chapter" data-level="5.2.2" data-path="field_valid.html"><a href="field_valid.html#load-uas-data-function"><i class="fa fa-check"></i><b>5.2.2</b> Load UAS data function</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="field_valid.html"><a href="field_valid.html#validation-data-functions"><i class="fa fa-check"></i><b>5.3</b> Validation Data Functions</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="field_valid.html"><a href="field_valid.html#true-positive-identification"><i class="fa fa-check"></i><b>5.3.1</b> True Positive Identification</a></li>
+<li class="chapter" data-level="5.3.2" data-path="field_valid.html"><a href="field_valid.html#combine-with-commission-and-omission"><i class="fa fa-check"></i><b>5.3.2</b> Combine with Commission and Omission</a></li>
+<li class="chapter" data-level="5.3.3" data-path="field_valid.html"><a href="field_valid.html#full-validation-function"><i class="fa fa-check"></i><b>5.3.3</b> Full validation function</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="field_valid.html"><a href="field_valid.html#full-pipeline-function"><i class="fa fa-check"></i><b>5.4</b> Full pipeline function</a></li>
+<li class="chapter" data-level="5.5" data-path="field_valid.html"><a href="field_valid.html#apply-validation-for-all"><i class="fa fa-check"></i><b>5.5</b> Apply validation for all</a></li>
+<li class="chapter" data-level="5.6" data-path="field_valid.html"><a href="field_valid.html#full-validation-summary-data"><i class="fa fa-check"></i><b>5.6</b> Full Validation Summary Data</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="field_valid.html"><a href="field_valid.html#true-positive-commission-ommission"><i class="fa fa-check"></i><b>5.6.1</b> True Positive, Commission, Ommission</a></li>
+<li class="chapter" data-level="5.6.2" data-path="field_valid.html"><a href="field_valid.html#f-score"><i class="fa fa-check"></i><b>5.6.2</b> F-score</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="field_valid.html"><a href="field_valid.html#valid_ex"><i class="fa fa-check"></i><b>5.7</b> Example Validation Process</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="field_valid.html"><a href="field_valid.html#data-load"><i class="fa fa-check"></i><b>5.7.1</b> Data Load</a></li>
+<li class="chapter" data-level="5.7.2" data-path="field_valid.html"><a href="field_valid.html#orthomosaic-data"><i class="fa fa-check"></i><b>5.7.2</b> Orthomosaic Data</a></li>
+<li class="chapter" data-level="5.7.3" data-path="field_valid.html"><a href="field_valid.html#field-data"><i class="fa fa-check"></i><b>5.7.3</b> Field Data</a></li>
+<li class="chapter" data-level="5.7.4" data-path="field_valid.html"><a href="field_valid.html#uas-data"><i class="fa fa-check"></i><b>5.7.4</b> UAS Data</a></li>
+<li class="chapter" data-level="5.7.5" data-path="field_valid.html"><a href="field_valid.html#true-positives"><i class="fa fa-check"></i><b>5.7.5</b> True Positives</a></li>
+<li class="chapter" data-level="5.7.6" data-path="field_valid.html"><a href="field_valid.html#field-uas-comparison"><i class="fa fa-check"></i><b>5.7.6</b> Field &amp; UAS Comparison</a></li>
+<li class="chapter" data-level="5.7.7" data-path="field_valid.html"><a href="field_valid.html#combine-plots"><i class="fa fa-check"></i><b>5.7.7</b> Combine Plots</a></li>
+<li class="chapter" data-level="5.7.8" data-path="field_valid.html"><a href="field_valid.html#height-vs.-dbh-of-tp-co-om"><i class="fa fa-check"></i><b>5.7.8</b> Height vs. DBH of <span class="math inline">\(Tp\)</span>, <span class="math inline">\(Co\)</span>, <span class="math inline">\(Om\)</span></a></li>
+<li class="chapter" data-level="5.7.9" data-path="field_valid.html"><a href="field_valid.html#height-and-dbh-distribution-tp-co-om"><i class="fa fa-check"></i><b>5.7.9</b> Height and DBH Distribution <span class="math inline">\(Tp\)</span>, <span class="math inline">\(Co\)</span>, <span class="math inline">\(Om\)</span></a></li>
+<li class="chapter" data-level="5.7.10" data-path="field_valid.html"><a href="field_valid.html#detected-overstory-tp-height-difference"><i class="fa fa-check"></i><b>5.7.10</b> Detected Overstory (<span class="math inline">\(TP\)</span>) Height Difference</a></li>
+<li class="chapter" data-level="5.7.11" data-path="field_valid.html"><a href="field_valid.html#detected-overstory-tp-dbh-difference"><i class="fa fa-check"></i><b>5.7.11</b> Detected Overstory (<span class="math inline">\(TP\)</span>) DBH Difference</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="field_valid.html"><a href="field_valid.html#mapped-validation-for-all-sites"><i class="fa fa-check"></i><b>5.8</b> Mapped validation for all sites</a>
+<ul>
+<li class="chapter" data-level="5.8.1" data-path="field_valid.html"><a href="field_valid.html#plotting-function"><i class="fa fa-check"></i><b>5.8.1</b> Plotting Function</a></li>
+<li class="chapter" data-level="5.8.2" data-path="field_valid.html"><a href="field_valid.html#validation-maps"><i class="fa fa-check"></i><b>5.8.2</b> Validation Maps</a></li>
+<li class="chapter" data-level="5.8.3" data-path="field_valid.html"><a href="field_valid.html#validation-maps-combined"><i class="fa fa-check"></i><b>5.8.3</b> Validation Maps Combined</a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="field_valid.html"><a href="field_valid.html#field-data-descriptive-statistics"><i class="fa fa-check"></i><b>5.9</b> Field Data Descriptive Statistics</a>
+<ul>
+<li class="chapter" data-level="5.9.1" data-path="field_valid.html"><a href="field_valid.html#table-of-height-summary-statistics"><i class="fa fa-check"></i><b>5.9.1</b> Table of Height Summary Statistics</a></li>
+<li class="chapter" data-level="5.9.2" data-path="field_valid.html"><a href="field_valid.html#table-of-dbh-summary-statistics"><i class="fa fa-check"></i><b>5.9.2</b> Table of DBH Summary Statistics</a></li>
+<li class="chapter" data-level="5.9.3" data-path="field_valid.html"><a href="field_valid.html#height-and-dbh-distribution"><i class="fa fa-check"></i><b>5.9.3</b> Height and DBH Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="5.10" data-path="field_valid.html"><a href="field_valid.html#summary-of-dependent-variables"><i class="fa fa-check"></i><b>5.10</b> Summary of Dependent Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="stats_validation.html"><a href="stats_validation.html"><i class="fa fa-check"></i><b>6</b> Statistical Analysis: Tree Detection (F-Score)</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="stats_validation.html"><a href="stats_validation.html#setup-1"><i class="fa fa-check"></i><b>6.1</b> Setup</a></li>
+<li class="chapter" data-level="6.2" data-path="stats_validation.html"><a href="stats_validation.html#summary-statistics"><i class="fa fa-check"></i><b>6.2</b> Summary Statistics</a></li>
+<li class="chapter" data-level="6.3" data-path="stats_validation.html"><a href="stats_validation.html#f_one_pred_mod"><i class="fa fa-check"></i><b>6.3</b> One Nominal Predictor</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="stats_validation.html"><a href="stats_validation.html#summary-statistics-1"><i class="fa fa-check"></i><b>6.3.1</b> Summary Statistics</a></li>
+<li class="chapter" data-level="6.3.2" data-path="stats_validation.html"><a href="stats_validation.html#f_one_pred_mod_bays"><i class="fa fa-check"></i><b>6.3.2</b> Bayesian</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="stats_validation.html"><a href="stats_validation.html#beta_mod"><i class="fa fa-check"></i><b>6.4</b> The beta: Three Nominal Predictors + site effects</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="stats_validation.html"><a href="stats_validation.html#summary-statistics-2"><i class="fa fa-check"></i><b>6.4.1</b> Summary Statistics</a></li>
+<li class="chapter" data-level="6.4.2" data-path="stats_validation.html"><a href="stats_validation.html#f_5_pred_mod_bays"><i class="fa fa-check"></i><b>6.4.2</b> Bayesian</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="stats_validation.html"><a href="stats_validation.html#bayesian-p-value"><i class="fa fa-check"></i><b>6.5</b> Bayesian p-value</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="stats_detected.html"><a href="stats_detected.html"><i class="fa fa-check"></i><b>7</b> Statistical Analysis: Detected Tree Reliability</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="stats_detected.html"><a href="stats_detected.html#stats_detected_model"><i class="fa fa-check"></i><b>7.1</b> Model Definition</a></li>
+<li class="chapter" data-level="7.2" data-path="stats_detected.html"><a href="stats_detected.html#setup-2"><i class="fa fa-check"></i><b>7.2</b> Setup</a></li>
+<li class="chapter" data-level="7.3" data-path="stats_detected.html"><a href="stats_detected.html#tree-height"><i class="fa fa-check"></i><b>7.3</b> Tree Height</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="stats_detected.html"><a href="stats_detected.html#summary-statistics-3"><i class="fa fa-check"></i><b>7.3.1</b> Summary Statistics</a></li>
+<li class="chapter" data-level="7.3.2" data-path="stats_detected.html"><a href="stats_detected.html#model-height-mean-error-bias"><i class="fa fa-check"></i><b>7.3.2</b> Model: Height Mean Error (bias)</a></li>
+<li class="chapter" data-level="7.3.3" data-path="stats_detected.html"><a href="stats_detected.html#model-height-rmse-precision"><i class="fa fa-check"></i><b>7.3.3</b> Model: Height RMSE (precision)</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="stats_detected.html"><a href="stats_detected.html#stats_detected_dbh"><i class="fa fa-check"></i><b>7.4</b> Tree DBH</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="stats_detected.html"><a href="stats_detected.html#summary-statistics-4"><i class="fa fa-check"></i><b>7.4.1</b> Summary Statistics</a></li>
+<li class="chapter" data-level="7.4.2" data-path="stats_detected.html"><a href="stats_detected.html#model-dbh-mean-error-bias"><i class="fa fa-check"></i><b>7.4.2</b> Model: DBH Mean Error (bias)</a></li>
+<li class="chapter" data-level="7.4.3" data-path="stats_detected.html"><a href="stats_detected.html#model-dbh-rmse-precision"><i class="fa fa-check"></i><b>7.4.3</b> Model: DBH RMSE (precision)</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="stats_detected.html"><a href="stats_detected.html#posterior-predictive-checks"><i class="fa fa-check"></i><b>7.5</b> Posterior Predictive Checks</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="stats_detected.html"><a href="stats_detected.html#prior-distriubutions"><i class="fa fa-check"></i><b>7.5.1</b> Prior Distriubutions</a></li>
+<li class="chapter" data-level="7.5.2" data-path="stats_detected.html"><a href="stats_detected.html#trace-plots"><i class="fa fa-check"></i><b>7.5.2</b> Trace-plots</a></li>
+<li class="chapter" data-level="7.5.3" data-path="stats_detected.html"><a href="stats_detected.html#hatr-values"><i class="fa fa-check"></i><b>7.5.3</b> <span class="math inline">\(\hat{R}\)</span> values</a></li>
+<li class="chapter" data-level="7.5.4" data-path="stats_detected.html"><a href="stats_detected.html#ess-values"><i class="fa fa-check"></i><b>7.5.4</b> ESS values</a></li>
+<li class="chapter" data-level="7.5.5" data-path="stats_detected.html"><a href="stats_detected.html#mean-and-sd"><i class="fa fa-check"></i><b>7.5.5</b> Mean and SD</a></li>
+<li class="chapter" data-level="7.5.6" data-path="stats_detected.html"><a href="stats_detected.html#bayesian-p-value-1"><i class="fa fa-check"></i><b>7.5.6</b> Bayesian p-value</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="stand_ba.html"><a href="stand_ba.html"><i class="fa fa-check"></i><b>8</b> Statistical Analysis: Stand Basal Area</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="stand_ba.html"><a href="stand_ba.html#setup-3"><i class="fa fa-check"></i><b>8.1</b> Setup</a></li>
+<li class="chapter" data-level="8.2" data-path="stand_ba.html"><a href="stand_ba.html#ba-percentage-error-bias"><i class="fa fa-check"></i><b>8.2</b> BA Percentage Error (bias)</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="stand_ba.html"><a href="stand_ba.html#summary-statistics-5"><i class="fa fa-check"></i><b>8.2.1</b> Summary Statistics</a></li>
+<li class="chapter" data-level="8.2.2" data-path="stand_ba.html"><a href="stand_ba.html#model-ba-percentage-error"><i class="fa fa-check"></i><b>8.2.2</b> Model: BA percentage error</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="stand_ba.html"><a href="stand_ba.html#ba-absolute-percentage-error-precision"><i class="fa fa-check"></i><b>8.3</b> BA Absolute Percentage Error (precision)</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="stand_ba.html"><a href="stand_ba.html#summary-statistics-6"><i class="fa fa-check"></i><b>8.3.1</b> Summary Statistics</a></li>
+<li class="chapter" data-level="8.3.2" data-path="stand_ba.html"><a href="stand_ba.html#model-ba-absolute-percentage-error"><i class="fa fa-check"></i><b>8.3.2</b> Model: BA Absolute percentage error</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="stand_ba.html"><a href="stand_ba.html#posterior-predictive-checks-1"><i class="fa fa-check"></i><b>8.4</b> Posterior Predictive Checks</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="stand_ba.html"><a href="stand_ba.html#prior-distriubutions-1"><i class="fa fa-check"></i><b>8.4.1</b> Prior Distriubutions</a></li>
+<li class="chapter" data-level="8.4.2" data-path="stand_ba.html"><a href="stand_ba.html#trace-plots-1"><i class="fa fa-check"></i><b>8.4.2</b> Trace-plots</a></li>
+<li class="chapter" data-level="8.4.3" data-path="stand_ba.html"><a href="stand_ba.html#hatr-values-1"><i class="fa fa-check"></i><b>8.4.3</b> <span class="math inline">\(\hat{R}\)</span> values</a></li>
+<li class="chapter" data-level="8.4.4" data-path="stand_ba.html"><a href="stand_ba.html#ess-values-1"><i class="fa fa-check"></i><b>8.4.4</b> ESS values</a></li>
+<li class="chapter" data-level="8.4.5" data-path="stand_ba.html"><a href="stand_ba.html#mean-and-sd-1"><i class="fa fa-check"></i><b>8.4.5</b> Mean and SD</a></li>
+<li class="chapter" data-level="8.4.6" data-path="stand_ba.html"><a href="stand_ba.html#bayesian-p-value-2"><i class="fa fa-check"></i><b>8.4.6</b> Bayesian p-value</a></li>
+<li class="chapter" data-level="8.4.7" data-path="stand_ba.html"><a href="stand_ba.html#sigma-posteriors-1"><i class="fa fa-check"></i><b>8.4.7</b> <span class="math inline">\(\sigma\)</span> posteriors</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">UAS-SfM Software Tree Detection Comparison</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Section 3</span> Data<a href="data.html#data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Five ponderosa pine (<em>Pinus ponderosa</em>) dominated sites with 100% census field stem-mapped inventories were used to evaluate how SfM algorithm parameters impact individual tree detection and resulting stand basal area estimates compared to field-based measurements. UAS flights from the following forests were included: the Manitou Experimental Forest on the Pike-San Isabel National Forest (Colorado; “N1”), the Black Hills Experimental Forest on the Black Hills National Forest (South Dakota; “SQ09_02”, “WA85_02”), and the Lookout Canyon area in the Kaibab National Forest (Arizona; “Kaibab_High”, “Kaibab_Low”).</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="objective.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ptcld_analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

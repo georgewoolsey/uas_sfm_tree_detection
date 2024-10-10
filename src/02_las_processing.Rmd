@@ -18,7 +18,7 @@ library(scales) # work with number and plot scales
 library(latex2exp)
 
 # visualization
-# library(mapview) # interactive html maps
+library(mapview) # interactive html maps
 library(kableExtra) # tables
 library(patchwork) # combine plots
 library(ggnewscale) # ggnewscale
@@ -31,14 +31,8 @@ library(sf) # simple features
 # modeling
 library(brms)
 library(tidybayes)
-library(emmeans)
-library(ggpubr)
-library(rstatix)
-library(broom)
-library(marginaleffects)
 
 # others
-library(pdftools) # pdf data extraction
 library(parallel) # get cores
 
 # option to put satellite imagery as base layer of mapview maps
@@ -93,7 +87,8 @@ We tracked the photogrammetry (SfM) data generation processing times across the 
 load the Excel file with ODM and Pix4D
 
 ```{r}
-odm_pix_temp = readxl::read_xlsx("../data/SfM_Processing_Time.xlsx") %>% 
+odm_pix_temp = 
+  readr::read_csv("../data/sfm_processing_time.csv") %>% 
   dplyr::rename_with(~ .x %>% 
     stringr::str_squish() %>% 
     str_remove_all("[[:punct:]]") %>% 
@@ -254,7 +249,7 @@ We saved the processed data in the directory which we call `ptcld_processing_dir
 
 For comparison across software, the SfM point cloud generation processing parameters are mapped to the Metashape parameters based on the [Pix4D documentation](https://support.pix4d.com/hc/en-us/articles/202557799-Menu-Process-Processing-Options-2-Point-Cloud-and-Mesh-Point-Cloud-PIX4Dmapper), the [OpenDroneMap documentation](https://docs.opendronemap.org/arguments/), and the [Agisoft Metashape discussion board](https://www.agisoft.com/forum/index.php?topic=11007.0)
 
-```{r processing-dta-ld, results='hide'}
+```{r, results='hide'}
 ### get tracking data
  # read list of all processed tracking files
   tracking_list_df =
@@ -307,7 +302,7 @@ tracking_list_df %>% dplyr::glimpse()
 
 read each tracking data file, bind rows
 
-```{r processing-dta-ld, results='hide'}
+```{r, results='hide'}
 # read each tracking data file, bind rows
   ptcld_processing_data = 1:nrow(tracking_list_df) %>%
     purrr::map(function(row_n){

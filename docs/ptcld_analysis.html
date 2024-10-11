@@ -69,7 +69,7 @@
 <script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
 <link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
 <link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
-<script src="libs/canopy ht. (m)_8796eb-1/data_stars_canopyhtmd90274.txt"></script>
+<script src="libs/canopy ht. (m)_814937-1/data_stars_canopyhtm7389ea.txt"></script>
 <script src="libs/joda-0.0.1/joda.js"></script>
 <script src="libs/joda-0.0.1/addImageQuery-bindings.js"></script>
 <script type="text/javascript">
@@ -741,11 +741,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="summary-of-data-generation-and-processing" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Summary of Data Generation and Processing<a href="ptcld_analysis.html#summary-of-data-generation-and-processing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>join the SfM data generation to the processing data which we’ll use to build our full analysis data set and create the normalized processing time using Min-Max normalization as:</p>
-<p><span class="math display">\[
-x^{\prime}_{ij} = \frac{x_{ij}-x_{min[j]}}{x_{max[j]}-x_{min[j]}}
-\]</span></p>
-<p>where <span class="math inline">\(i\)</span> is the the study site observation within each software <span class="math inline">\(j\)</span> where each software was implemented on a different computer.</p>
+<p>join the SfM data generation to the processing data which we’ll use to build our full analysis data set and create the normalized processing time using Min-Max normalization.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="ptcld_analysis.html#cb19-1" tabindex="-1"></a>ptcld_processing_data <span class="ot">=</span> ptcld_processing_data <span class="sc">%&gt;%</span> </span>
 <span id="cb19-2"><a href="ptcld_analysis.html#cb19-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">left_join</span>(</span>
 <span id="cb19-3"><a href="ptcld_analysis.html#cb19-3" tabindex="-1"></a>    sfm_comb_temp</span>
@@ -1764,7 +1760,7 @@ NA
 </div>
 <div id="sfm-image-processing-time-summary" class="section level3 hasAnchor" number="4.3.7">
 <h3><span class="header-section-number">4.3.7</span> SfM image processing time summary<a href="ptcld_analysis.html#sfm-image-processing-time-summary" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Summary of the normalized SfM image processing time normalized using Min-Max normalization as:</p>
+<p>Because the SfM photogrammetry software were each run on different processing computers we need to normalize the processing time by software. SfM image processing time was normalized using Min-Max normalization as:</p>
 <p><span class="math display">\[
 x^{\prime}_{ij} = \frac{x_{ij}-x_{min[j]}}{x_{max[j]}-x_{min[j]}}
 \]</span></p>

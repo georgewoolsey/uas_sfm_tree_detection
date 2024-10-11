@@ -459,13 +459,7 @@ ptcld_processing_data = ptcld_processing_data %>%
 
 ## Summary of Data Generation and Processing
 
-join the SfM data generation to the processing data which we'll use to build our full analysis data set and create the normalized processing time using Min-Max normalization as:
-
-$$
-x^{\prime}_{ij} = \frac{x_{ij}-x_{min[j]}}{x_{max[j]}-x_{min[j]}}
-$$
-
-where $i$ is the the study site observation within each software $j$ where each software was implemented on a different computer.  
+join the SfM data generation to the processing data which we'll use to build our full analysis data set and create the normalized processing time using Min-Max normalization.
 
 ```{r}
 ptcld_processing_data = ptcld_processing_data %>% 
@@ -1012,7 +1006,7 @@ ggplot2::ggsave("../data/ptcld_summary_stats.png", height = 8.5, width = 11)
 
 ### SfM image processing time summary
 
-Summary of the normalized SfM image processing time normalized using Min-Max normalization as:
+Because the SfM photogrammetry software were each run on different processing computers we need to normalize the processing time by software. SfM image processing time was normalized using Min-Max normalization as:
 
 $$
 x^{\prime}_{ij} = \frac{x_{ij}-x_{min[j]}}{x_{max[j]}-x_{min[j]}}

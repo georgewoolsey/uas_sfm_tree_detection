@@ -69,7 +69,7 @@
 <script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
 <link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
 <link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
-<script src="libs/canopy ht. (m)_8796eb-1/data_stars_canopyhtmd90274.txt"></script>
+<script src="libs/canopy ht. (m)_814937-1/data_stars_canopyhtm7389ea.txt"></script>
 <script src="libs/joda-0.0.1/joda.js"></script>
 <script src="libs/joda-0.0.1/addImageQuery-bindings.js"></script>
 <script type="text/javascript">
@@ -7581,7 +7581,7 @@ disabled
 </blockquote>
 <p>Check the Bayesian p-values between the models</p>
 <div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="stand_ba.html#cb399-1" tabindex="-1"></a><span class="co"># get the model p-values</span></span>
-<span id="cb399-2"><a href="stand_ba.html#cb399-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">16</span>) <span class="co"># replicate results</span></span>
+<span id="cb399-2"><a href="stand_ba.html#cb399-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">41</span>) <span class="co"># replicate results</span></span>
 <span id="cb399-3"><a href="stand_ba.html#cb399-3" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(</span>
 <span id="cb399-4"><a href="stand_ba.html#cb399-4" tabindex="-1"></a>    <span class="fu">get_mod_p_val</span>(brms_ba_pe_mod, <span class="at">ndraws =</span> <span class="dv">5000</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb399-5"><a href="stand_ba.html#cb399-5" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">model =</span> <span class="st">&quot;brms_ba_pe_mod&quot;</span>)</span>
@@ -7611,10 +7611,10 @@ P.sd
 brms_ba_pe_mod
 </td>
 <td style="text-align:right;">
-0.493
+0.513
 </td>
 <td style="text-align:right;">
-0.564
+0.569
 </td>
 </tr>
 <tr>
@@ -7622,10 +7622,10 @@ brms_ba_pe_mod
 brms_ba_ape_mod
 </td>
 <td style="text-align:right;">
-0.669
+0.661
 </td>
 <td style="text-align:right;">
-0.902
+0.894
 </td>
 </tr>
 </tbody>

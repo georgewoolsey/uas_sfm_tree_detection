@@ -2524,7 +2524,7 @@ Check the Bayesian p-values between the models
 
 ```{r}
 # get the model p-values
-set.seed(16) # replicate results
+set.seed(41) # replicate results
 dplyr::bind_rows(
     get_mod_p_val(brms_ba_pe_mod, ndraws = 5000) %>% 
       dplyr::mutate(model = "brms_ba_pe_mod")

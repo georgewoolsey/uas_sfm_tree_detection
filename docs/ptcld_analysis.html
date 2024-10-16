@@ -69,7 +69,7 @@
 <script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
 <link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
 <link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
-<script src="libs/canopy ht. (m)_814937-1/data_stars_canopyhtm7389ea.txt"></script>
+<script src="libs/canopy ht. (m)_fa1b6d-1/data_stars_canopyhtm26fae1.txt"></script>
 <script src="libs/joda-0.0.1/joda.js"></script>
 <script src="libs/joda-0.0.1/addImageQuery-bindings.js"></script>
 <script type="text/javascript">
@@ -334,8 +334,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Section 4</span> Point Cloud Generation and Processing<a href="ptcld_analysis.html#ptcld_analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="sfm-image-processing-data" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> SfM Image Processing Data<a href="ptcld_analysis.html#sfm-image-processing-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We tracked the photogrammetry (SfM) data generation processing times across the software platforms. Bring in this data and combine it as it has slightly different structure. The softwares were all run on different machines which means we need to figure out a way to standardize the image processing time to compare across software</p>
-<p>load the Excel file with ODM and Pix4D</p>
+<p>We tracked the photogrammetry (SfM) data generation processing times across the software platforms. Bring in this data and combine it as it has slightly different structure. The software packages were all run on different machines which means we need to figure out a way to standardize the image processing time to compare across software.</p>
+<p>Load the file with ODM and Pix4D image processing data</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="ptcld_analysis.html#cb1-1" tabindex="-1"></a>odm_pix_temp <span class="ot">=</span> </span>
 <span id="cb1-2"><a href="ptcld_analysis.html#cb1-2" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;../data/sfm_processing_time.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb1-3"><a href="ptcld_analysis.html#cb1-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename_with</span>(<span class="sc">~</span> .x <span class="sc">%&gt;%</span> </span>

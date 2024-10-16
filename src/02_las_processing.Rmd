@@ -82,9 +82,9 @@ dir.create(paste0(rootdir, "/fits"), showWarnings = F)
 
 ## SfM Image Processing Data
 
-We tracked the photogrammetry (SfM) data generation processing times across the software platforms. Bring in this data and combine it as it has slightly different structure. The softwares were all run on different machines which means we need to figure out a way to standardize the image processing time to compare across software
+We tracked the photogrammetry (SfM) data generation processing times across the software platforms. Bring in this data and combine it as it has slightly different structure. The software packages were all run on different machines which means we need to figure out a way to standardize the image processing time to compare across software.
 
-load the Excel file with ODM and Pix4D
+Load the file with ODM and Pix4D image processing data
 
 ```{r}
 odm_pix_temp = 
